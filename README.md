@@ -1,10 +1,12 @@
 # ol-vue-example
 
-A simple application showing the integration of an OpenLayers map into a Vue.js app.
-
-Provides a basemap switcher and a control to draw features on the map
+A simple application showing the integration of an OpenLayers map into a Vue.js app (basemap switcher + drawing control).
 
 _For a working example see [demo](https://raruto.github.io/ol-vue-example/)_
+
+---
+
+[![Vue.js + Openlayers](https://raruto.github.io/img/ol-vue-example.png)](https://raruto.github.io)
 
 > _Initally based on the [work](https://dev.to/camptocamp-geo/integrating-an-openlayers-map-in-vue-js-a-step-by-step-guide-2n1p) of **Olivier “Jahow” Guyot**_
 

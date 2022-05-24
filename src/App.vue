@@ -79,5 +79,11 @@
   aside select, aside button {
     min-width: 100%;
   }
+  
+  @media (max-width: 760px) {
+    main {
+      flex-direction: column-reverse;
+    }
+  }
 
 </style>

@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/ol-vue/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/ol-vue-example/' : '/',
   pages: {
     index: {
       // entry for the page

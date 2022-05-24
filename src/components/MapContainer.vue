@@ -43,8 +43,17 @@
         controls: this.controls,
         interactions: this.customInt || this.interactions,
       });
+      this.setMouseCursor();
       this.$emit('init', this.olMap);
     },
+    methods: {
+      setMouseCursor() {
+        let map = this.olMap;
+        map.getViewport().style.cursor = "grab";
+        map.on('pointerdrag', () => map.getViewport().style.cursor = "grabbing");
+        map.on('pointerup', () => map.getViewport().style.cursor = "grab");
+      }
+    }
   }
 </script>
 

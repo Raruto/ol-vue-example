@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Check for deploy script
+if [ ! -f "deploy.sh" ]; then
+	echo 'Warning: missing deploy.sh script (stop deploying).'
+	exit 0
+fi
+
+. ./deploy.sh

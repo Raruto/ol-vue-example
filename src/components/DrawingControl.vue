@@ -24,25 +24,19 @@
       interactions: Collection
     },
     data: () => ({
-      drawingGeomType: '',
+      selected: '',
       hasActiveLayers: false,
     }),
-    computed: {
-      selected: {
-        set(value) {
-          this.toggleInteraction(value);
-          return value;
-        },
-        get() {
-          return this.drawingGeomType;
-        }
-      }
-    },
     mounted() {
       this.vector = new VectorLayer({
         source: new VectorSource({ wrapX: false })
       });
       this.layerGroup.getLayers().push(this.vector);
+    },
+    watch: {
+      selected(value) {
+        this.toggleInteraction(value);
+      }
     },
     methods: {
       toggleInteraction(type) {
@@ -52,9 +46,16 @@
           this.draw.once('drawstart', () => this.hasActiveLayers = true);
           this.draw.once('drawend', () => this.hasActiveLayers = true);
           this.interactions.extend([this.draw]);
+          this.toggleMapCursor(true);
         }
       },
-      clear(){
+      toggleMapCursor(active) {
+        if (this.draw && this.draw.getMap()) {
+          this.draw.getMap().getViewport().style.cursor = active ? 'default' : '';
+        }
+      },
+      clear() {
+        this.toggleMapCursor(false);
         this.selected = '';
         this.hasActiveLayers = false
         this.vector.getSource().clear();

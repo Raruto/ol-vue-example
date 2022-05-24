@@ -49,9 +49,11 @@
     methods: {
       setMouseCursor() {
         let map = this.olMap;
-        map.getViewport().style.cursor = "grab";
-        map.on('pointerdrag', () => map.getViewport().style.cursor = "grabbing");
-        map.on('pointerup', () => map.getViewport().style.cursor = "grab");
+        map.getViewport().classList.add('ol-grab');
+        map.on(['pointerdrag', 'pointerup'], (e) => {
+          map.getViewport().classList.toggle('ol-grabbing', e.type == 'pointerdrag');
+          map.getViewport().classList.toggle('ol-grab', e.type == 'pointerup');
+        });
       }
     }
   }
